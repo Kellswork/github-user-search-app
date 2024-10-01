@@ -14,6 +14,7 @@
   // Dark mode styles
   [data-theme="dark"] & {
     background-color: $search-background-dark;
+    box-shadow: none;
   }
 
   img {
@@ -25,6 +26,7 @@
   input {
     font-family: "Space Mono", monospace;
     border: none;
+    background-color: transparent;
     width: 100%; //to be removed later, after I add the no result div
     @include font-line(var(--font-h4), var(--line-height-4));
 

@@ -8,9 +8,8 @@
   background-color: $background-main-light;
   padding: 31px 24px;
   height: 100vh;
-
   // Dark mode styles
-  [data-theme="dark"] & {
+  &[data-theme="dark"] {
     background-color: $background-main-dark;
   }
 }
@@ -41,6 +40,7 @@
   // Dark mode styles
   [data-theme="dark"] & {
     background-color: $background-card-dark;
+    box-shadow: none;
   }
 
   .user-bio__header {
@@ -53,7 +53,7 @@
 
     // Dark mode styles
     [data-theme="dark"] & {
-      background-color: $header-text-dark;
+      color: $header-text-dark;
     }
   }
 
@@ -63,13 +63,14 @@
   }
 
   .user-bio__text p {
+    padding-top: 7px;
     font-size: 13px;
     @include font-line(var(--font-h3-mobile), var(--line-height-h3-mobile));
     color: $secondary-text-light;
 
     // Dark mode styles
     [data-theme="dark"] & {
-      background-color: $secondary-text-dark;
+      color: $secondary-text-dark;
     }
   }
 
