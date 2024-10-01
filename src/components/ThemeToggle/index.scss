@@ -1,0 +1,27 @@
+@use "../../styles/colors";
+
+.theme-toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  span {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+    color: colors.$body-text-light;
+    letter-spacing: 0.156em;
+
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}

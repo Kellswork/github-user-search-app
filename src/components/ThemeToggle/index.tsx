@@ -1,10 +1,11 @@
-import React from "react";
+import themeIcon from '../../assets/images/icon-moon.svg';
+import './index.scss';
 
 export default function ThemeToggle() {
   return (
-    <div className="icon-link-container">
-      <p>Dark</p>
-      <img src="" alt="" />
-    </div>
+    <button className="theme-toggle-container">
+      <span>Dark</span>
+      <img src={themeIcon} alt="" />
+    </button>
   );
 }

@@ -1,11 +1,13 @@
-import React from "react";
-import locationIcon from '../../assets/images/icon-location.svg'
-
-export default function IconLInk() {
+interface IconLinkProps {
+  name: string;
+  imgSrc: string;
+  altText: string;
+}
+export default function IconLInk({ name, imgSrc, altText }: IconLinkProps) {
   return (
-    <div className="icon-link-container">
-      <p>san francisco</p>
-      <img src={locationIcon} alt="" />
-    </div>
+    <li className="icon-link__item">
+      <img src={imgSrc} alt={altText} />
+      <p>{name}</p>
+    </li>
   );
 }

@@ -1,11 +1,13 @@
-import React from "react";
+import searchIcon from '../../assets/images/icon-search.svg'
+import './index.scss'
 
 export default function SearchBar() {
   return (
-    <div>
-      <img src="" alt="" />
-      <input placeholder="Search GitHub username..." />
-      <button>Search</button>
+    <div className='search-container'>
+      <img src={searchIcon} alt="" />
+      <input placeholder="Search GitHub username..."/>
+      <span className='error-msg'></span>
+      <button className='search-container__btn'>Search</button>
     </div>
   );
 }
