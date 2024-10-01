@@ -1,9 +1,8 @@
-@use "../../styles/colors";
+@use "../../styles/abstracts/mixins" as *;
+@use "../../styles/abstracts/colors" as *;
 
 .theme-toggle-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flexbox($justify: center, $align: center);
   gap: 16px;
   border: none;
   background-color: transparent;
@@ -12,12 +11,15 @@
   span {
     font-family: "Space Mono", monospace;
     font-weight: 700;
-    font-size: 0.8rem;
-    line-height: 1.2rem;
     text-transform: uppercase;
-    color: colors.$body-text-light;
+    color: $body-text-light;
     letter-spacing: 0.156em;
+    @include font-line(var(--font-h4), var(--line-height-4));
 
+    // Dark mode styles
+    [data-theme="dark"] & {
+      color: $body-text-dark;
+    }
   }
 
   img {

@@ -1,13 +1,25 @@
-@use "../../styles/colors";
+@use "../../styles/abstracts/colors" as *;
+@use "../../styles/abstracts/typography" as *;
 
 .user-stats-details {
   text-transform: capitalize;
   h4 {
     font-size: 11px;
-    color: colors.$secondary-light;
+    color: $secondary-text-light;
   }
   h2{
     font-size: 16px;
-    color: colors.$header-text-light;
+    color: $header-text-light
+  }
+
+  [data-theme="dark"] & {
+    h4{
+      color: $secondary-text-dark;
+    }
+    h2{
+      font-size: 16px;
+      color: $header-text-dark;
+    }
+
   }
 }
