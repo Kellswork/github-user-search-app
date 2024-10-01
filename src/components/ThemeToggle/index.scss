@@ -16,14 +16,33 @@
     letter-spacing: 0.156em;
     @include font-line(var(--font-h4), var(--line-height-4));
 
+    &:hover {
+      color: $logo-text-light;
+    }
+
     // Dark mode styles
     [data-theme="dark"] & {
       color: $body-text-dark;
+      &:hover {
+        color: #90a4d4;
+      }
     }
   }
 
   img {
     width: 20px;
     height: 20px;
+  }
+
+  svg {
+    path {
+      &:hover {
+        fill: #222731;
+
+        [data-theme="dark"] & {
+          fill: #90a4d4;
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
-import moonIcon from "../../assets/images/icon-moon.svg";
-import sunIcon from "../../assets/images/icon-sun.svg";
 import "./index.scss";
+import { MoonIcon } from "./ThemeSVG";
+import { SunIcon } from "./ThemeSVG";
 
 interface ThemeTogglePops {
   theme: string;
@@ -12,9 +12,9 @@ export default function ThemeToggle({ theme, toggleTheme }: ThemeTogglePops) {
     <button onClick={toggleTheme} className="theme-toggle-container">
       {theme === "light" ? <span>Dark</span> : <span>Light</span>}
       {theme === "light" ? (
-        <img src={moonIcon} alt="" />
+        <MoonIcon/>
       ) : (
-        <img src={sunIcon} alt="" />
+        <SunIcon/>
       )}
     </button>
   );

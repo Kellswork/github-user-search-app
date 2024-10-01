@@ -49,5 +49,10 @@
     border-radius: $border-radius-1;
     margin-left: 7px;
     @include font-line(var(--font-h4), var(--line-height-4));
+    cursor: pointer;
+
+    &:hover {
+      background-color: $button-hover;
+    }
   }
 }

@@ -41,21 +41,25 @@ function App() {
             name="San Francisco"
             imgSrc={locationIcon}
             altText="Location Icon"
+            link=''
           />
           <IconLInk
             name="https://github.blog"
             imgSrc={websiteIcon}
             altText="Website Icon"
+            link=''
           />
           <IconLInk
             name="Not Available"
             imgSrc={twitterIcon}
             altText="Twitter Icon"
+            link=''
           />
           <IconLInk
             name="@github"
             imgSrc={comapnyIcon}
             altText="Company Icon"
+            link=''
           />
         </ul>
       </div>

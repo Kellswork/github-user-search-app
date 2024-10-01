@@ -119,6 +119,12 @@
       gap: 13px;
       @include font-line(var(--font-h4), var(--line-height-h4));
 
+      a{
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
       [data-theme="dark"] & {
         color: $secondary-text-dark;
       }

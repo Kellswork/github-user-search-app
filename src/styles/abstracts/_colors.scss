@@ -1,7 +1,7 @@
-
 $white: hsl(0°, 0%, 100%);
 $error: hsl(0°, 91%, 62%);
 $button: hsl(212°, 100%, 50%);
+$button-hover: hsl(212°, 100%, 69%);
 
 // Define SCSS color variables for light mode
 
@@ -11,8 +11,6 @@ $background-main-light: hsl(227°, 100%, 98%);
 $background-card-light: hsl(0°, 0%, 100%);
 $header-text-light: hsl(217°, 21%, 21%);
 $logo-text-light: hsl(220°, 18%, 16%);
-
-
 
 // Define SCSS color variables for dark mode
 $background-main-dark: hsl(220°, 40%, 13%);
