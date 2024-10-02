@@ -113,6 +113,7 @@
     list-style: none;
 
     .icon-link__item {
+      font-family: "Space Mono", monospace;
       padding-bottom: 15px;
       color: $secondary-text-light;
       @include flexbox($align: center);

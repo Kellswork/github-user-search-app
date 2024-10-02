@@ -29,11 +29,22 @@
     background-color: transparent;
     width: 100%; //to be removed later, after I add the no result div
     @include font-line(var(--font-h4), var(--line-height-4));
+    caret-color: $button;
+    color: $logo-text-light;
+    padding: 8px;
+    // font-size: 1.125rem;
 
     &::placeholder {
       color: $body-text-light;
+    }
 
-      [data-theme="dark"] & {
+    &:focus-visible {
+      outline-color: $button;
+    }
+
+    [data-theme="dark"] & {
+      color: $logo-text-dark;
+      &::placeholder {
         color: $body-text-dark;
       }
     }
