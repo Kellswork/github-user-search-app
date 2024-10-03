@@ -7,7 +7,7 @@ const useGetData = (url: string, fetcher: (url: string) => any) => {
   useEffect(() => {
     const _resource = wrapPromise(fetcher(url));
     setResource(_resource);
-  }, []);
+  }, [fetcher, url]);
 
   return resource?.read();
 };
