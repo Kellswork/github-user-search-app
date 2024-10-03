@@ -1,13 +1,13 @@
-
+import { FetchDataProps, UsersProps } from "../components/SearchBar/type";
 
 export async function fetchData(query: string) {
   try {
     const response = await fetch(
       `https://api.github.com/search/users?q=${query}`
     );
-    // if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-    const data = await response.json();
+    const data = (await response.json()) as FetchDataProps;
     return data.items;
   } catch (error) {
     console.log("Fetch error", error);
@@ -17,10 +17,9 @@ export async function fetchData(query: string) {
 
 // cache fetched data
 let cache = new Map();
-export function getData(query: string){
-  if(!cache.has(query)){
-    cache.set(query, fetchData(query))
+export function getData(query: string): Promise<UsersProps[]> {
+  if (!cache.has(query)) {
+    cache.set(query, fetchData(query));
   }
   return cache.get(query);
-
-};
+}

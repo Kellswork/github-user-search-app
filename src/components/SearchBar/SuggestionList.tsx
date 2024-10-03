@@ -1,39 +1,50 @@
-import React, { useState, useEffect, memo } from "react"; // Import memo
-import { getData } from "../../api/fetchData";
-import wrapPromise from "../../api/wrapPromise";
-
+import React, { memo } from "react"; // Import memo
+import useFetch from "../../hooks/useFetch";
 interface SuggestionListProps {
   query: string;
+  handleSuggestionClick: (selectedUsername: string) => void;
+  setShowSuggestions: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SuggestionList: React.FC<SuggestionListProps> = memo(({ query }) => {
-  // Implement suspense
-  const [resource, setResource] = useState<any>(null);
+const SuggestionList: React.FC<SuggestionListProps> = ({
+  query,
+  handleSuggestionClick,
+  setShowSuggestions,
+}) => {
 
-  useEffect(() => {
-    if (query) {
-      const fetchDataSus = wrapPromise(getData(query));
-      setResource(fetchDataSus);
-    } else {
-      setResource(null);
-    }
-  }, [query]);
+  const { data, error } = useFetch(query);
 
+  function handleClick(selectedUsername: string) {
+    handleSuggestionClick(selectedUsername);
+    setShowSuggestions(false);
+  }
+  
   // Use resource to read user data or return an empty array
-  const users = resource ? resource.read() : [];
-  const limitedUsers = users.slice(0, 5); // Limit to 5 users
+  const limitedUsers = data === undefined ? [] : data.slice(0, 5); // Limit to 5 users
+
+
+  if (query === "") return null;
 
   return (
-    <div>
-      {users.length > 0 ? (
-        <ul className="suggestion-list-container">
+    <div className="suggestion-list-container">
+      {data === undefined || error ? (
+        <p className="error">github free search rate limit exceeded</p>
+      ) : (
+        <ul>
           {limitedUsers.map((user: { login: string }) => (
-            <li key={user.login}>{user.login}</li>
+            <li
+              onClick={() => {
+                handleClick(user.login);
+              }}
+              key={user.login}
+            >
+              {user.login}
+            </li>
           ))}
         </ul>
-      ) : null}
+      )}
     </div>
   );
-});
-
+};
+// add memo back
 export default SuggestionList;
