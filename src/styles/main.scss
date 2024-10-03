@@ -4,6 +4,10 @@
 @use "./abstracts/mixins" as *;
 @use "./abstracts/typography" as *;
 
+.disabled {
+  opacity: 0.5;
+}
+
 .main-container {
   background-color: $background-main-light;
   @include flexbox($justify:center);
@@ -34,105 +38,3 @@
   }
 }
 
-.user-bio {
-  background-color: $background-card-light;
-  margin-top: 16px;
-  padding: 24px;
-  border-radius: $border-radius-2;
-  box-shadow: $box-shadow;
-
-  // Dark mode styles
-  [data-theme="dark"] & {
-    background-color: $background-card-dark;
-    box-shadow: none;
-  }
-
-  .user-bio__header {
-    @include flexbox($align: center);
-    gap: 19px;
-  }
-  .user-bio__text h1 {
-    @include font-line(var(--font-h1-mobile), var(--line-height-h1-mobile));
-    color: $header-text-light;
-
-    // Dark mode styles
-    [data-theme="dark"] & {
-      color: $header-text-dark;
-    }
-  }
-
-  .user-bio__text h3 {
-    @include font-line(var(--font-h3-mobile), var(--line-height-h3-mobile));
-    color: $button;
-  }
-
-  .user-bio__text p {
-    padding-top: 7px;
-    font-size: 13px;
-    @include font-line(var(--font-h3-mobile), var(--line-height-h3-mobile));
-    color: $secondary-text-light;
-
-    // Dark mode styles
-    [data-theme="dark"] & {
-      color: $secondary-text-dark;
-    }
-  }
-
-  .user-bio__img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .user-bio__about {
-    margin-top: 33px;
-
-    p {
-      font-size: 13px;
-      @include font-line(var(--font-h3-mobile), 1.563rem);
-      color: $secondary-text-light;
-
-      [data-theme="dark"] & {
-        color: $secondary-text-dark;
-      }
-    }
-  }
-
-  .user-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    background-color: $background-main-light;
-    border-radius: $border-radius-1;
-    margin-top: 23px;
-
-    [data-theme="dark"] & {
-      background-color: $background-main-dark;
-    }
-  }
-
-  .icon-link__list {
-    margin-top: 24px;
-    list-style: none;
-
-    .icon-link__item {
-      font-family: "Space Mono", monospace;
-      padding-bottom: 15px;
-      color: $secondary-text-light;
-      @include flexbox($align: center);
-      gap: 13px;
-      @include font-line(var(--font-h4), var(--line-height-h4));
-
-      a{
-        text-decoration: none;
-        &:hover{
-          text-decoration: underline;
-        }
-      }
-      [data-theme="dark"] & {
-        color: $secondary-text-dark;
-      }
-    }
-  }
-}

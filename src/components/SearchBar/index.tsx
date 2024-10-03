@@ -3,12 +3,13 @@ import searchIcon from "../../assets/images/icon-search.svg";
 import "./index.scss";
 import SuggestionList from "./SuggestionList";
 
-export default function SearchBar() {
+export default function SearchBar({setSelectedUser}:{setSelectedUser:React.Dispatch<React.SetStateAction<string>>}) {
+
   const [username, setUsername] = useState<string>("");
   const [showSuggestion, setShowSuggestion] = useState(false);
   const defferedQuery = useDeferredValue(username);
 
-  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  async function handleInputChange(e: React.ChangeEvent<HTMLInputElement>){
     setUsername(e.currentTarget.value);
     setShowSuggestion(true);
   };
@@ -17,6 +18,14 @@ export default function SearchBar() {
     setUsername(selectedUsername);
     setShowSuggestion(false);
   };
+
+  function handleSubmit(e:React.FormEvent<HTMLButtonElement>){
+    e.preventDefault();
+    setSelectedUser(username);
+    setUsername('');
+    
+  }
+
   return (
     <>
       <div className="search-container">
@@ -27,13 +36,12 @@ export default function SearchBar() {
           placeholder="Search GitHub username..."
         />
         <span className="error-msg"></span>
-        <button className="search-container__btn">Search</button>
+        <button onClick={handleSubmit} className="search-container__btn">Search</button>
       </div>
       {showSuggestion && (
         <SuggestionList
           query={defferedQuery}
           handleSuggestionClick={handleSuggestionClick}
-        
         />
       )}
     </>
