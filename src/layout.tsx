@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 
+const prefersColorTheme = window.matchMedia("(prefers-color-scheme: light)")
+  .matches
+  ? "light"
+  : "dark";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(prefersColorTheme);
 
   function toggleTheme() {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
