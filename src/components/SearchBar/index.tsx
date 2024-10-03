@@ -1,4 +1,4 @@
-import React, { useCallback, useDeferredValue, useState } from "react";
+import React, { useDeferredValue, useState } from "react";
 import searchIcon from "../../assets/images/icon-search.svg";
 import "./index.scss";
 import SuggestionList from "./SuggestionList";
@@ -13,9 +13,10 @@ export default function SearchBar() {
     setShowSuggestion(true);
   };
 
-  const handleSuggestionClick = useCallback((selectedUsername: string) => {
+  function handleSuggestionClick(selectedUsername: string){
     setUsername(selectedUsername);
-  }, []);
+    setShowSuggestion(false);
+  };
   return (
     <>
       <div className="search-container">
@@ -32,7 +33,7 @@ export default function SearchBar() {
         <SuggestionList
           query={defferedQuery}
           handleSuggestionClick={handleSuggestionClick}
-          setShowSuggestions={setShowSuggestion}
+        
         />
       )}
     </>
