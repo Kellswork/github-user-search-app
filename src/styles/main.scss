@@ -6,11 +6,15 @@
 
 .main-container {
   background-color: $background-main-light;
-  padding: 31px 24px;
+  @include flexbox($justify:center);
   height: 100vh;
   // Dark mode styles
   &[data-theme="dark"] {
     background-color: $background-main-dark;
+  }
+
+  .container-width {
+    width: 90%;
   }
 }
 .main-container__header {

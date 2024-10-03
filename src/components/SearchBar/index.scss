@@ -3,6 +3,7 @@
 @use "../../styles/abstracts/variables" as *;
 
 .search-container {
+  position: relative;
   display: flex;
   align-items: center;
   background-color: $white;
@@ -32,7 +33,6 @@
     caret-color: $button;
     color: $logo-text-light;
     padding: 8px;
-    // font-size: 1.125rem;
 
     &::placeholder {
       color: $body-text-light;
@@ -66,4 +66,15 @@
       background-color: $button-hover;
     }
   }
+}
+
+.suggestion-list-container{
+  background-color: $white;
+    border-radius: 10px;
+    margin-top: -8px;
+    position: absolute;
+    width: 90%;
+    padding: 16px;
+    box-shadow: 0px 25px 50px -12px hsl(227, 46%, 51%, 25%);
+    list-style: none;
 }
