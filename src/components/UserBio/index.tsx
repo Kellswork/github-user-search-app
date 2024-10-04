@@ -4,63 +4,101 @@ import twitterIcon from "../../assets/images/icon-twitter.svg";
 import comapnyIcon from "../../assets/images/icon-company.svg";
 import UserStats from "../UserStats";
 import IconLInk from "../IconLink";
-import useFetch from "../../hooks/useFetch";
 import { GitHubUserProp } from "./type";
 import { company, formattedDate } from "../../utils/helpers";
 import "./index.scss";
+import useGetData from "../../hooks/useGetData";
+import { getData } from "../../api/fetchData";
+import { useEffect } from "react";
 
-export default function UserBio({ selecetedUser }: { selecetedUser: string }) {
-  const url = `https://api.github.com/users/${selecetedUser}`;
-  const { data, isLoading, error } = useFetch<GitHubUserProp>(url);
+export default function UserBio({
+  selecetedUser,
+  setNoUserError,
+}: {
+  selecetedUser: string;
+  setNoUserError: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const url = selecetedUser
+    ? `https://api.github.com/users/${selecetedUser}`
+    : "";
+
+  const data: GitHubUserProp = useGetData(url, getData);
+
+  useEffect(() => {
+    // Check if data is a string, and set error if it is
+    if (typeof data === "string") {
+      setNoUserError("No results");
+    } else {
+      setNoUserError(""); // Clear the error if we have valid data
+    }
+  }, [data, setNoUserError]);
+
+  const octocatUserData = {
+    avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
+    name: "The Octocat",
+    login: "octocat",
+    created_at: "2011-01-25T18:44:36Z",
+    bio: null,
+    public_repos: 8,
+    followers: 15188,
+    following: 9,
+    location: "San Francisco",
+    blog: "https://github.blog",
+    twitter_username: null,
+    company: "@github",
+  };
+
+  const displayData =
+    typeof data === "string" || !data ? octocatUserData : data;
 
   return (
     <div className="user-bio">
       <div className="user-bio__header">
         <div className="user-bio__img">
-          <img src={data?.avatar_url} alt="" />
+          <img src={displayData?.avatar_url} alt="" />
         </div>
         <div className="user-bio__text">
-          <h1>{data?.name ?? data?.login}</h1>
-          <h3>@{data?.login}</h3>
-          <p>Joined {formattedDate(data?.created_at)}</p>
+          <h1>{displayData?.name ?? displayData?.login}</h1>
+          <h3>@{displayData?.login}</h3>
+          <p>Joined {formattedDate(displayData?.created_at)}</p>
         </div>
       </div>
 
       <div className="user-bio__about">
-        {data?.bio ? (
-          <p>{data?.bio}</p>
+        {displayData?.bio ? (
+          <p>{displayData?.bio}</p>
         ) : (
           <p className="disabled">This profile has no bio</p>
         )}
       </div>
       <div className="user-stats">
-        <UserStats label="repos" value={data?.public_repos} />
-        <UserStats label="Followers" value={data?.followers} />
-        <UserStats label="Following" value={data?.following} />
+        <UserStats label="repos" value={displayData?.public_repos} />
+        <UserStats label="Followers" value={displayData?.followers} />
+        <UserStats label="Following" value={displayData?.following} />
       </div>
       <ul className="icon-link__list">
         <IconLInk
-          name={data?.location}
+          name={displayData?.location}
           imgSrc={locationIcon}
           altText="Location Icon"
         />
         <IconLInk
-          name={data?.blog}
+          name={displayData?.blog}
           imgSrc={websiteIcon}
           altText="Blog link"
-          link={data?.blog}
+          link={displayData?.blog}
         />
         <IconLInk
-          name={data?.twitter_username}
+          name={displayData?.twitter_username}
           imgSrc={twitterIcon}
           altText="Twitter Icon"
-          link={`https://twitter.com/${data?.twitter_username}`}
+          link={`https://twitter.com/${displayData?.twitter_username}`}
         />
         <IconLInk
-          name={data?.company}
+          name={displayData?.company}
           imgSrc={comapnyIcon}
           altText="Company Icon"
-          link={`https://github.com/${company(data?.company)}`}
+          link={`https://github.com/${company(displayData?.company)}`}
         />
       </ul>
     </div>

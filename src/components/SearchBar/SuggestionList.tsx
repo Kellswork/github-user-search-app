@@ -22,7 +22,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({
   }
 
   if (query === "") return null;
-
+console.log(error)
   return (
     <div className="suggestion-list-container">
       {(isLoading || suggestionList.length === 0) && null }

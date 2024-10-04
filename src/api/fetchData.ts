@@ -1,13 +1,13 @@
-export async function fetchData<T>(url: string): Promise<T> {
+export async function fetchData<T>(url: string): Promise<T | string> {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const data = (await response.json()) as T;
     return data;
-  } catch (error) {
-    console.log("Fetch error", error);
-    throw error;
+  } catch (error: any) {
+    console.log("Fetch error", error.message);
+    return `Failed to fetch data: ${error.message}`;
   }
 }
 
