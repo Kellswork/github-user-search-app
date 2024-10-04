@@ -7,31 +7,12 @@ import IconLInk from "../IconLink";
 import { GitHubUserProp } from "./type";
 import { company, formattedDate } from "../../utils/helpers";
 import "./index.scss";
-import useGetData from "../../hooks/useGetData";
-import { getData } from "../../api/fetchData";
-import { useEffect } from "react";
 
 export default function UserBio({
-  selecetedUser,
-  setNoUserError,
+  data
 }: {
-  selecetedUser: string;
-  setNoUserError: React.Dispatch<React.SetStateAction<string>>;
+data: GitHubUserProp | null
 }) {
-  const url = selecetedUser
-    ? `https://api.github.com/users/${selecetedUser}`
-    : "";
-
-  const data: GitHubUserProp = useGetData(url, getData);
-
-  useEffect(() => {
-    // Check if data is a string, and set error if it is
-    if (typeof data === "string") {
-      setNoUserError("No results");
-    } else {
-      setNoUserError(""); // Clear the error if we have valid data
-    }
-  }, [data, setNoUserError]);
 
   const octocatUserData = {
     avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",

@@ -1,43 +1,49 @@
-import React, { useDeferredValue, useState } from "react";
+import React, { useDeferredValue, useMemo, useState } from "react";
 import searchIcon from "../../assets/images/icon-search.svg";
 import "./index.scss";
 import SuggestionList from "./SuggestionList";
 import { FetchDataProps } from "./type";
 import useFetch from "../../hooks/useFetch";
+import useDebounce from "../../hooks/useDebounce";
 
 export default function SearchBar({
   setSelectedUser,
-  setNoUserError,
   noUserError,
 }: {
   setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
-  setNoUserError: React.Dispatch<React.SetStateAction<string>>;
-  noUserError: string;
+  noUserError: string | null;
 }) {
   const [username, setUsername] = useState<string>("");
-  const defferedQuery = useDeferredValue(username);
+  const debounceQuery = useDebounce(username, 300);
+  const defferedQuery = useDeferredValue(debounceQuery);
+
   const url = defferedQuery
     ? `https://api.github.com/search/users?q=${defferedQuery}`
     : ""; // stop data from fetching when the username is empty
   const { data, error, isLoading } = useFetch<FetchDataProps>(url);
-  console.log("ser", error);
 
-  const suggestionList = data && data.items ? data.items.slice(0, 5) : [];
+  const suggestionList = useMemo(() => {
+    return data && data.items ? data.items.slice(0, 5) : [];
+  }, [data]);
 
   const [showSuggestion, setShowSuggestion] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
+  
 
   async function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+
     setUsername(e.currentTarget.value);
     setShowSuggestion(true);
+    // if(e.currentTarget.value) setNoUserError('');
   }
 
   function handleSuggestionClick(selectedUsername: string) {
     setUsername(selectedUsername);
+    setActiveSuggestion(-1);
     setShowSuggestion(false);
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSelectedUser(defferedQuery);
     setUsername("");
@@ -53,26 +59,40 @@ export default function SearchBar({
           setActiveSuggestion((prev) => prev + 1);
         break;
       case "Enter":
-        setUsername(suggestionList[activeSuggestion].login);
-        setShowSuggestion(false);
+        console.log(showSuggestion)
+        e.preventDefault();
+        
+        if (activeSuggestion >= 0) {
+          setUsername(suggestionList[activeSuggestion].login);
+          setShowSuggestion(false);
+          setActiveSuggestion(-1)
+        } else{
+          console.log('here')
+          return
+        }
+        break;
     }
   }
 
+  console.log("user", username);
+
   return (
     <>
-      <div className="search-container">
-        <img src={searchIcon} alt="" />
-        <input
-          value={username}
-          onChange={handleInputChange}
-          placeholder="Search GitHub username..."
-          onKeyDown={hanldeKeyDown}
-        />
-        <span className="error-msg">{noUserError}</span>
-        <button onClick={handleSubmit} className="search-container__btn">
-          Search
-        </button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="search-container">
+          <img src={searchIcon} alt="" />
+          <input
+            value={username}
+            onChange={handleInputChange}
+            placeholder="Search GitHub username..."
+            onKeyDown={hanldeKeyDown}
+          />
+          {noUserError && !username && (
+            <span className="error-msg">No results</span>
+          )}
+          <button className="search-container__btn">Search</button>
+        </div>
+      </form>
       {showSuggestion && (
         <SuggestionList
           query={defferedQuery}
