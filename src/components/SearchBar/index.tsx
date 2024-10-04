@@ -5,22 +5,27 @@ import SuggestionList from "./SuggestionList";
 import { FetchDataProps } from "./type";
 import useFetch from "../../hooks/useFetch";
 
-
 export default function SearchBar({
   setSelectedUser,
+  setNoUserError,
+  noUserError,
 }: {
   setSelectedUser: React.Dispatch<React.SetStateAction<string>>;
+  setNoUserError: React.Dispatch<React.SetStateAction<string>>;
+  noUserError: string;
 }) {
   const [username, setUsername] = useState<string>("");
-  const url = username ? `https://api.github.com/search/users?q=${username}`: ''; // stop data from fetching when the username is empty
+  const defferedQuery = useDeferredValue(username);
+  const url = defferedQuery
+    ? `https://api.github.com/search/users?q=${defferedQuery}`
+    : ""; // stop data from fetching when the username is empty
   const { data, error, isLoading } = useFetch<FetchDataProps>(url);
-  
-  const suggestionList =
-    data === undefined || data === null ? [] : data.items.slice(0, 5);
+  console.log("ser", error);
+
+  const suggestionList = data && data.items ? data.items.slice(0, 5) : [];
 
   const [showSuggestion, setShowSuggestion] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
-  const defferedQuery = useDeferredValue(username);
 
   async function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.currentTarget.value);
@@ -34,7 +39,7 @@ export default function SearchBar({
 
   function handleSubmit(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
-    setSelectedUser(username);
+    setSelectedUser(defferedQuery);
     setUsername("");
   }
 
@@ -63,7 +68,7 @@ export default function SearchBar({
           placeholder="Search GitHub username..."
           onKeyDown={hanldeKeyDown}
         />
-        <span className="error-msg"></span>
+        <span className="error-msg">{noUserError}</span>
         <button onClick={handleSubmit} className="search-container__btn">
           Search
         </button>
