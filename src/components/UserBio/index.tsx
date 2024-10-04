@@ -7,10 +7,9 @@ import IconLInk from "../IconLink";
 import useFetch from "../../hooks/useFetch";
 import { GitHubUserProp } from "./type";
 import { company, formattedDate } from "../../utils/helpers";
-import './index.scss';
+import "./index.scss";
 
 export default function UserBio({ selecetedUser }: { selecetedUser: string }) {
-
   const url = `https://api.github.com/users/${selecetedUser}`;
   const { data, isLoading, error } = useFetch<GitHubUserProp>(url);
 

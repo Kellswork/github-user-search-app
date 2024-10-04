@@ -6,7 +6,7 @@
   --font-h2: 1.4rem;
   --font-h3: 1rem;
   --font-h4: 0.825rem;
-  --font-body: 0.9rem;
+  --font-body: 0.938rem;
 
 
   --font-h1-mobile: 1rem;
@@ -41,28 +41,23 @@
 h1 {
   font-family: "Space Mono Bold", monospace;
   font-weight: 700;
-  @include font-line(--font-h1, --line-height-h1);
 }
 
 h2 {
   font-family: "Space Mono Bold", monospace;
   font-weight: 700;
-  @include font-line(var(--font-h2), var(--line-height-h2));
 }
 
 h3 {
   font-family: "Space Mono", monospace;
   font-weight: 400;
-  @include font-line(--font-h3, --line-height-h3);
 }
 h4 {
   font-family: "Space Mono", monospace;
   font-weight: 400;
-  @include font-line(--font-h4, --line-height-h4);
 }
 
 p {
   font-family: "Space Mono", monospace;
   font-weight: 400;
-  @include font-line(--font-body, --line-height-body);
 }

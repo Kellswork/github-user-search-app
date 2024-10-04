@@ -12,6 +12,15 @@
   background-color: $background-main-light;
   @include flexbox($justify:center);
   height: 100vh;
+  padding-top: 31px;
+
+  @media (min-width: $media-small-medium-screen) {
+    padding-top: 0;
+    align-items: center;
+  }
+
+
+
   // Dark mode styles
   &[data-theme="dark"] {
     background-color: $background-main-dark;
@@ -19,7 +28,14 @@
 
   .container-width {
     width: 90%;
+    max-width: 35.8rem;
+
+    @media (min-width:$media-medium-large-screen) {
+      max-width: 45.625rem;
+    }
   }
+
+
 }
 .main-container__header {
   width: 100%;

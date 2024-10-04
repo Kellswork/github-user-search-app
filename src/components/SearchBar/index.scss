@@ -113,3 +113,15 @@
     }
   }
 }
+
+@media (min-width: $media-small-medium-screen) {
+  .search-container {
+    input {
+      font-size: 18px;
+    }
+
+    .search-container__btn {
+      font-size: 16px;
+    }
+  }
+}

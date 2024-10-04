@@ -1,25 +1,57 @@
 @use "../../styles/abstracts/colors" as *;
 @use "../../styles/abstracts/typography" as *;
+@use "../../styles/abstracts/mixins" as *;
+@use "../../styles/abstracts/variables" as *;
 
+.user-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: $background-main-light;
+  border-radius: $border-radius-1;
+  margin-top: 23px;
+
+  [data-theme="dark"] & {
+    background-color: $background-main-dark;
+  }
+}
 .user-stats-details {
   text-transform: capitalize;
   h4 {
     font-size: 11px;
     color: $secondary-text-light;
   }
-  h2{
-    font-size: 16px;
-    color: $header-text-light
+  h2 {
+    @include font-line(var(--font-h3), var(--line-height-h3));
+    color: $header-text-light;
   }
 
   [data-theme="dark"] & {
-    h4{
+    h4 {
       color: $secondary-text-dark;
     }
-    h2{
-      font-size: 16px;
+    h2 {
       color: $header-text-dark;
     }
+  }
+}
 
+@media (min-width: $media-small-medium-screen) {
+  .user-stats{
+    padding-left: 32px;
+    padding-right: 32px;
+    text-align: start;
+
+  }
+  .user-stats-details {
+
+    h4 {
+      @include font-line(var(--font-h4), var(--line-height-h4));
+    }
+    h2 {
+      @include font-line(var(--font-h2), var(--line-height-h2));
+    }
   }
 }
