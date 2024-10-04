@@ -84,7 +84,13 @@
   margin-top: -8px;
   position: absolute;
   width: 90%;
+  max-width: 35.8rem;
   z-index: 100;
+
+
+  @media (min-width:$media-medium-large-screen) {
+    max-width: 45.625rem;
+  }
 
   box-shadow: 0px 25px 50px -12px hsl(227, 46%, 51%, 25%);
 
@@ -132,5 +138,8 @@
     .search-container__btn {
       font-size: 16px;
     }
+  }
+  .suggestion-list-container{
+    @include font-line(var(--font-body), var(--line-height-body));
   }
 }
