@@ -1,4 +1,4 @@
-export async function fetchData<T>(url: string): Promise<T | string> {
+export default async function fetchData<T>(url: string): Promise<T> {
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
@@ -6,16 +6,7 @@ export async function fetchData<T>(url: string): Promise<T | string> {
     const data = (await response.json()) as T;
     return data;
   } catch (error: any) {
-    console.log("Fetch error", error.message);
-    return `Failed to fetch data: ${error.message}`;
+    console.log("fetch error", error);
+    throw error;
   }
-}
-
-// cache fetched data
-let cache = new Map<string, Promise<any>>();
-export function getData<T>(url: string): Promise<T> {
-  if (!cache.has(url)) {
-    cache.set(url, fetchData<T>(url));
-  }
-  return cache.get(url) as Promise<T>;
 }
