@@ -21,9 +21,9 @@ function App() {
   return (
     <Layout>
       <ErrorBoundary>
-      <SearchBar noUserError={error} setSelectedUser={setSelectedUser} />
+        <SearchBar noUserError={error} setSelectedUser={setSelectedUser} />
+        {isLoading ? <SkeletonLoader /> : <UserBio data={data} />}
       </ErrorBoundary>
-      {isLoading ? <SkeletonLoader /> : <UserBio data={data} />}
     </Layout>
   );
 }

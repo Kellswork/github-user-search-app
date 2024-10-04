@@ -1,3 +1,4 @@
+import { highlightMatch } from "../../utils/highlightMatch";
 import { UsersProps } from "./type";
 interface SuggestionListProps {
   query: string;
@@ -37,7 +38,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({
               }}
               key={user.login}
             >
-              {user.login}
+              {highlightMatch(user.login, query)}
             </li>
           ))}
         </ul>

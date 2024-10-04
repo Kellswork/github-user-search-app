@@ -74,8 +74,6 @@ export default function SearchBar({
     }
   }
 
-  console.log("user", username);
-
   return (
     <>
       <form onSubmit={handleSubmit}>
