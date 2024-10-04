@@ -17,9 +17,6 @@ function App() {
     : "";
 
   const { data, error, isLoading } = useFetch<GitHubUserProp>(url);
-  console.log("data", data);
-  console.log("error", error);
-  console.log("loading", isLoading);
 
   return (
     <Layout>
