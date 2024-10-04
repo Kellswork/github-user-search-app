@@ -68,31 +68,48 @@
   }
 }
 
-.suggestion-list-container{
+.suggestion-list-container {
   font-family: "Space Mono", monospace;
   @include font-line(var(--font-h4), var(--line-height-4));
   background-color: $white;
-    border-radius: 10px;
-    margin-top: -8px;
-    position: absolute;
-    width: 90%;
-    
-    box-shadow: 0px 25px 50px -12px hsl(227, 46%, 51%, 25%);
-    
-    ul{
-      list-style: none;
+  border-radius: 10px;
+  margin-top: -8px;
+  position: absolute;
+  width: 90%;
+  z-index: 100;
+
+  box-shadow: 0px 25px 50px -12px hsl(227, 46%, 51%, 25%);
+
+  ul {
+    list-style: none;
+  }
+  li {
+    cursor: pointer;
+    padding: 8px 24px;
+    &:hover {
+      background-color: $background-main-light;
     }
-    li{
-      cursor: pointer;
-      padding: 8px 24px;
-      &:hover {
-        background-color: $background-main-light;
-    
-      }
+  }
+  .active {
+    background-color: $background-main-light;
+  }
+  .error {
+    color: $error;
+    padding: 16px 24px;
+  }
+
+  [data-theme="dark"] & {
+    background-color: $background-card-dark;
+    color: white;
+    $box-shadow: 0px 16px 30px -10px hsla(227, 37%, 90%, 0.199);
+
+    li:hover {
+      background-color: $background-main-light;
+      color: $background-card-dark;
     }
-    .error {
-      color: $error;
-      padding: 16px 24px;
+    .active {
+      background-color: $background-main-light;
+      color: $background-card-dark;
     }
-  
+  }
 }

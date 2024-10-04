@@ -10,15 +10,9 @@ import { company, formattedDate } from "../../utils/helpers";
 import './index.scss';
 
 export default function UserBio({ selecetedUser }: { selecetedUser: string }) {
-  console.log(selecetedUser);
+
   const url = `https://api.github.com/users/${selecetedUser}`;
   const { data, isLoading, error } = useFetch<GitHubUserProp>(url);
-
-  console.log(isLoading);
-  console.log(error);
-  console.log(data);
-
-
 
   return (
     <div className="user-bio">

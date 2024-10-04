@@ -7,6 +7,5 @@ export const formattedDate = (date: string | undefined) => date && new Date(date
 
 export const company = (companyName: string | null | undefined) => {
   const result = companyName && companyName.slice(1);
-  console.log(result);
   return result;
 };

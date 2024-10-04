@@ -1,36 +1,38 @@
-import React, { memo } from "react"; // Import memo
-import useFetch from "../../hooks/useFetch";
-import { FetchDataProps } from "./type";
+import { UsersProps } from "./type";
 interface SuggestionListProps {
   query: string;
   handleSuggestionClick: (selectedUsername: string) => void;
+  suggestionList: UsersProps[];
+  error: string | null;
+  activeSuggestion: number;
+  isLoading: boolean;
 }
 
 const SuggestionList: React.FC<SuggestionListProps> = ({
-  query,
   handleSuggestionClick,
+  query,
+  suggestionList,
+  activeSuggestion,
+  error,
+  isLoading
 }) => {
-  const url = `https://api.github.com/search/users?q=${query}`;
-  const { data, error } = useFetch<FetchDataProps>(url);
 
   function handleClick(selectedUsername: string) {
     handleSuggestionClick(selectedUsername);
   }
 
-  // Use resource to read user data or return an empty array
-  const limitedUsers =
-    data === undefined || data === null ? [] : data.items.slice(0, 5); // Limit to 5 users
-
   if (query === "") return null;
 
   return (
     <div className="suggestion-list-container">
-      {data === undefined || error ? (
+      {(isLoading || suggestionList.length === 0) && null }
+      { error ? (
         <p className="error">github free search rate limit exceeded</p>
       ) : (
         <ul>
-          {limitedUsers.map((user: { login: string }) => (
+          {suggestionList.map((user: { login: string }, index) => (
             <li
+            className={activeSuggestion === index ? 'active' : ''}
               onClick={() => {
                 handleClick(user.login);
               }}

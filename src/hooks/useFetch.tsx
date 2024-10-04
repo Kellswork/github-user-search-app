@@ -7,6 +7,9 @@ export default function useFetch<T>(url: string) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if(!url){
+      return;
+    }
     setIsLoading(true);
     setError(null);
 
