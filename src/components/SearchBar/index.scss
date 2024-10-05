@@ -24,6 +24,7 @@
     font-size: 13px;
     color: $error;
     white-space: nowrap;
+    padding: 0 8px;
   }
 
   img {
@@ -137,6 +138,12 @@
 
     .search-container__btn {
       font-size: 16px;
+    }
+
+    .error-msg {
+      padding-left: 12px;
+      padding-right: 12px;
+      font-size: var(--font-body);
     }
   }
   .suggestion-list-container{
