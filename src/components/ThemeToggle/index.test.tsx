@@ -1,12 +1,3 @@
-/**
-
- *
- * Intergration Test
- * 1. Test that when you change to dark mode or light mode, the styles are applied to
- *  a. SearchBar
- *  b. UserBio
- *  c. Suggestion List
- */
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import ThemeToggle from ".";

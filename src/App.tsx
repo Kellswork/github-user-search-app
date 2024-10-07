@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import UserBio from "./components/UserBio";
 import SkeletonLoader from "./components/UserBio/SkeletonLoader";
 import SearchBar from "./components/SearchBar";
+import './styles/main.scss'
 
 /**
  * App component that renders the main application layout, a search bar for GitHub users,
