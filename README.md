@@ -67,7 +67,8 @@ Users should be able to:
 
 ## Author
 
-Kelechi Ogbonna 
+**Kelechi Ogbonna**
+
 Passionate FulLStack(front-end heavy) dedicated to creating user-centric applications.
 
 
