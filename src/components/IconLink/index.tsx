@@ -16,7 +16,7 @@ export default function IconLInk({
       {link ? <a href={link} target="_blank" rel="noopener noreferrer">{name}</a> : <p>{name}</p>}
     </li>
   ) : (
-    <li className="icon-link__item disabled">
+    <li className="icon-link__item disabled" data-testid='icon-link-disabled'>
       <img src={imgSrc} alt={altText} />
       <p className="disabled">not available</p>
     </li>

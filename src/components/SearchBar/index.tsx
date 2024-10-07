@@ -1,4 +1,10 @@
-import React, { useDeferredValue, useMemo, useState } from "react";
+import React, {
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import searchIcon from "../../assets/images/icon-search.svg";
 import "./index.scss";
 import SuggestionList from "./SuggestionList";
@@ -16,6 +22,7 @@ export default function SearchBar({
   const [username, setUsername] = useState<string>("");
   const debounceQuery = useDebounce(username, 300);
   const defferedQuery = useDeferredValue(debounceQuery);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const url = defferedQuery
     ? `https://api.github.com/search/users?q=${defferedQuery}`
@@ -45,6 +52,25 @@ export default function SearchBar({
     setSelectedUser(username);
     setUsername("");
   }
+
+  useEffect(() => {
+    const handleFocusOut = (event: globalThis.MouseEvent) => {
+      // Check if the click is outside the input element
+      if (
+        inputRef.current &&
+        !inputRef.current.contains(event.target as Node)
+      ) {
+        setShowSuggestion(false);
+      }
+    };
+    // Add event listener when the component mounts
+    document.addEventListener("click", handleFocusOut);
+    // Remove the event listener when the component unmounts
+
+    return () => {
+      document.removeEventListener("click", handleFocusOut);
+    };
+  });
 
   function hanldeKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     switch (e.key) {
@@ -78,6 +104,7 @@ export default function SearchBar({
         <div className="search-container">
           <img src={searchIcon} alt="" />
           <input
+            ref={inputRef}
             data-testid="search-input"
             aria-label="search GitHub username"
             value={username}
@@ -107,6 +134,5 @@ export default function SearchBar({
   );
 }
 
-// implement accesibility with keyboard
 // TODO: implemnet accessinbility with aria if needed for the input box and the suggetion list dropdown
 // TODO: Bonus:  Add animation forsmooth tansition of the suggestion list

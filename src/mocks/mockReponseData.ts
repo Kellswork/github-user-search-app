@@ -1,3 +1,5 @@
+import { GitHubUserProp } from "../components/UserBio/type";
+
 export const octocatMockData = {
   login: "octocat",
   id: 583231,
@@ -33,7 +35,7 @@ export const octocatMockData = {
   updated_at: "2024-09-22T11:25:27Z",
 };
 
-export const KellsworkMockData = {
+export const KellsworkMockData:GitHubUserProp = {
   login: "Kellswork",
   id: 25595081,
   node_id: "MDQ6VXNlcjI1NTk1MDgx",

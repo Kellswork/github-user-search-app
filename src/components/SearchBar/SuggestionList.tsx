@@ -24,7 +24,7 @@ const SuggestionList: React.FC<SuggestionListProps> = ({
 
   if (query === "") return null;
   return (
-    <div className="suggestion-list-container">
+    <div data-testid="suggestion-list" className="suggestion-list-container">
       {(isLoading || suggestionList.length === 0) && null }
       { error ? (
         <p className="error">github free search rate limit exceeded</p>

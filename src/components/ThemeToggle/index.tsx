@@ -10,7 +10,7 @@ interface ThemeTogglePops {
 export default function ThemeToggle({ theme, toggleTheme }: ThemeTogglePops) {
   return (
     <button onClick={toggleTheme} className="theme-toggle-container">
-      {theme === "light" ? <span>Dark</span> : <span>Light</span>}
+      {theme === "light" ? <span data-testid='theme-toggle'>Dark</span> : <span data-testid='theme-toggle'>Light</span>}
       {theme === "light" ? (
         <MoonIcon/>
       ) : (
