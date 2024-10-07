@@ -15,8 +15,10 @@
 - [Acknowledgments](#acknowledgments)
 
 ## Overview
+
 This project is a GitHub User Search App designed to provide users with an intuitive interface for searching GitHub users by their username. Built with responsiveness and accessibility in mind, the app allows users to search for usernames, view a dropdown suggestion list, and see relevant user information—all while switching between light and dark themes based on user preferences.
-Design from 
+Design from
+
 ### The challenge
 
 Users should be able to:
@@ -33,11 +35,10 @@ Users should be able to:
 
 ![screenshot](src/assets/images/ui-design.jpg)
 
-
 ### Links
 
 - Solution URL: [GitHub Repo](https://github.com/Kellswork/github-user-search-app)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [kellswork.github.io/github-user-search-app](https://kellswork.github.io/github-user-search-app/)
 
 ## My process
 
@@ -51,7 +52,6 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [SCSS/SASS](https://sass-lang.com/) - For styles
 
-
 ### Key Takeaways
 
 - **Effective State Management**: Deepened understanding of state management patterns and daa fetching patterns, particularly when handling asynchronous data from multiple sources.
@@ -61,14 +61,12 @@ Users should be able to:
 - **Search Optimization**: Utilized debounce and deferred values to minimize unnecessary API calls, improving efficiency and responsiveness of the input search functionality.
 
 ### Useful Resources
+
 - [Frontend-Mentor](https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6) - A fantastic platform for honing front-end skills.
 - [React Documentation](https://react.dev) - JS library - For understanding React fundamentals and advanced concepts.
-
 
 ## Author
 
 **Kelechi Ogbonna**
 
 Passionate FullStack(front-end heavy) dedicated to creating user-centric applications.
-
-
