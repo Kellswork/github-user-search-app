@@ -32,7 +32,6 @@ export default function SearchBar({
   async function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.currentTarget.value);
     setShowSuggestion(true);
-    // if(e.currentTarget.value) setNoUserError('');
   }
 
   function handleSuggestionClick(selectedUsername: string) {
@@ -89,10 +88,7 @@ export default function SearchBar({
           {noUserError && !username && (
             <span className="error-msg">No results</span>
           )}
-          <button
-            data-testid="search-button"
-            className="search-container__btn"
-          >
+          <button data-testid="search-button" className="search-container__btn">
             Search
           </button>
         </div>
@@ -111,11 +107,6 @@ export default function SearchBar({
   );
 }
 
-// if you add the dark aoverlay to the background, remove the box shadow on the suggestion list
-//
 // implement accesibility with keyboard
-// implemnet accessinbility with aria if needed
-// clear the suggestion list when a user selects a suggestion
-/* Bonus 
-1. Add animation forsmooth tansition of the suggestion list
-*/
+// TODO: implemnet accessinbility with aria if needed for the input box and the suggetion list dropdown
+// TODO: Bonus:  Add animation forsmooth tansition of the suggestion list
