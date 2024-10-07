@@ -43,7 +43,7 @@ export default function SearchBar({
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSelectedUser(defferedQuery);
+    setSelectedUser(username);
     setUsername("");
   }
 
@@ -66,7 +66,7 @@ export default function SearchBar({
           setActiveSuggestion(-1);
         } else {
           e.preventDefault();
-          setSelectedUser(defferedQuery);
+          setSelectedUser(username);
           setUsername("");
         }
         break;
@@ -79,6 +79,8 @@ export default function SearchBar({
         <div className="search-container">
           <img src={searchIcon} alt="" />
           <input
+            data-testid="search-input"
+            aria-label="search GitHub username"
             value={username}
             onChange={handleInputChange}
             placeholder="Search GitHub username..."
@@ -87,7 +89,12 @@ export default function SearchBar({
           {noUserError && !username && (
             <span className="error-msg">No results</span>
           )}
-          <button className="search-container__btn">Search</button>
+          <button
+            data-testid="search-button"
+            className="search-container__btn"
+          >
+            Search
+          </button>
         </div>
       </form>
       {showSuggestion && (

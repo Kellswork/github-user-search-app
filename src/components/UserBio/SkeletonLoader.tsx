@@ -4,7 +4,7 @@ import "./index.scss";
 
 export default function SkeletonLoader() {
   return (
-    <div className="user-bio">
+    <div className="user-bio" data-testid='skeleton-loader'>
       <div className="user-bio__header">
         <div className="user-bio__img">
       <div className="skeleton skeleton__img"></div>
