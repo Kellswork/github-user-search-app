@@ -28,10 +28,8 @@ export default function SearchBar({
 
   const [showSuggestion, setShowSuggestion] = useState(false);
   const [activeSuggestion, setActiveSuggestion] = useState(-1);
-  
 
   async function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-
     setUsername(e.currentTarget.value);
     setShowSuggestion(true);
     // if(e.currentTarget.value) setNoUserError('');
@@ -59,16 +57,17 @@ export default function SearchBar({
           setActiveSuggestion((prev) => prev + 1);
         break;
       case "Enter":
-        console.log(showSuggestion)
+        console.log(showSuggestion);
         e.preventDefault();
-        
+
         if (activeSuggestion >= 0) {
           setUsername(suggestionList[activeSuggestion].login);
           setShowSuggestion(false);
-          setActiveSuggestion(-1)
-        } else{
-          console.log('here')
-          return
+          setActiveSuggestion(-1);
+        } else {
+          e.preventDefault();
+          setSelectedUser(defferedQuery);
+          setUsername("");
         }
         break;
     }

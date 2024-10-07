@@ -1,13 +1,12 @@
 import "./styles/main.scss";
 import Layout from "./layout";
 import SearchBar from "./components/SearchBar";
-import { lazy, useState } from "react";
+import { useState } from "react";
 import useFetch from "./hooks/useFetch";
 import { GitHubUserProp } from "./components/UserBio/type";
 import SkeletonLoader from "./components/UserBio/SkeletonLoader";
 import ErrorBoundary from "./components/ErrorBoundary";
-
-const UserBio = lazy(() => import("./components/UserBio"));
+import UserBio from "./components/UserBio";
 
 function App() {
   const [selectedUser, setSelectedUser] = useState("octocat");

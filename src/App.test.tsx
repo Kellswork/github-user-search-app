@@ -1,31 +1,31 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import './mocks/matchMedia'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
+describe('App Intergration Tests', () => {
+
+  beforeEach(() => {
+    fetchMock.resetMocks();
+  })
+
+  test("renders App", () => {
+    render(<App />);
+    const navElement = screen.getByText("devfinder");
+    expect(navElement).toBeInTheDocument();
+  });
+
+  describe('Search Functionality', () => {
+    test('Updates selected User when search button is clicked')
+  })
+
+})
 
 /**
- * Intergration Test
- * - search functionality: Simulate the user entering a username, navigating suggestions, and submitting the search. Check that the URL updates and that the UserBio component updates with the correct data.
- * 1. simulate typing in the search box. check that
- *  a. suggestion list is present and open
- * 2. test that when you click the button, selectedUser is updated with the value from the input box
- * 3. test that on load, the selectedUser is 'octact'.
- * 4. Network Test
- *  a.Test that when the state isLoading is true, the skeletal laoder is what is being shown
- *
- * -  Error handling flow: Simulate a network error or user not found error and check if the error message displays in the SearchBar and that the default UserBio data shows.
- * 
- * - successful fetch: Verify that after a successful fetch, the UserBio updates with the new user data. verify that the initail fetch is with octact.
- * 
- * Implemntation Tips
- * - mocking: use ject.mock for network calls for unit tests, mostly for the components in app.
- * - snapshot testing for UI presentational components ie UserBio to verify UI consistentcy.
+ * 0. 'on page load, API is called with octocat as the default selected user': the fetch api should have been called with octact as the selectd user and check ythat octatc is diplayed on the ui.
+ * 1.'updates selectedUser on button click and fetches data'
+ * 2. isloading is true, 'shows skeleton loader when isLoading is true'
+ * 3. error object is not null, shows error message when API call fails
+ * 4. data is not null, updates UserBio with fetched user data
  * 
  */
-
