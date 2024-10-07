@@ -69,6 +69,6 @@ Users should be able to:
 
 **Kelechi Ogbonna**
 
-Passionate FulLStack(front-end heavy) dedicated to creating user-centric applications.
+Passionate FullStack(front-end heavy) dedicated to creating user-centric applications.
 
 
