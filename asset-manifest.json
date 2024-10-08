@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.18edb5f1.css",
-    "main.js": "/react-gh-pages/static/js/main.ec85412f.js",
-    "static/media/SpaceMono-Regular.ttf": "/react-gh-pages/static/media/SpaceMono-Regular.8a2aa304d0bd5e41d186.ttf",
-    "static/media/SpaceMono-Bold.ttf": "/react-gh-pages/static/media/SpaceMono-Bold.056ac3ebe5f65cb5c4ac.ttf",
-    "static/media/icon-website.svg": "/react-gh-pages/static/media/icon-website.b7923f6c1dae9717c079c60d8a5c82e5.svg",
-    "static/media/icon-company.svg": "/react-gh-pages/static/media/icon-company.6f78ffb334b191c8ed54d0c2a6f7cc25.svg",
-    "index.html": "/react-gh-pages/index.html",
-    "static/media/icon-twitter.svg": "/react-gh-pages/static/media/icon-twitter.f6a2a695fbb260b28a9fd67dd4179ea5.svg",
-    "static/media/icon-search.svg": "/react-gh-pages/static/media/icon-search.0cc0c98424cc75d5e1dfbb9e3abb6785.svg",
-    "static/media/icon-location.svg": "/react-gh-pages/static/media/icon-location.f11c5487a9922cbad40a27e8cc1cfaee.svg",
-    "main.18edb5f1.css.map": "/react-gh-pages/static/css/main.18edb5f1.css.map",
-    "main.ec85412f.js.map": "/react-gh-pages/static/js/main.ec85412f.js.map"
+    "main.css": "/static/css/main.098400bd.css",
+    "main.js": "/static/js/main.22fb464f.js",
+    "static/media/SpaceMono-Regular.ttf": "/static/media/SpaceMono-Regular.8a2aa304d0bd5e41d186.ttf",
+    "static/media/SpaceMono-Bold.ttf": "/static/media/SpaceMono-Bold.056ac3ebe5f65cb5c4ac.ttf",
+    "static/media/icon-website.svg": "/static/media/icon-website.b7923f6c1dae9717c079c60d8a5c82e5.svg",
+    "static/media/icon-company.svg": "/static/media/icon-company.6f78ffb334b191c8ed54d0c2a6f7cc25.svg",
+    "index.html": "/index.html",
+    "static/media/icon-twitter.svg": "/static/media/icon-twitter.f6a2a695fbb260b28a9fd67dd4179ea5.svg",
+    "static/media/icon-search.svg": "/static/media/icon-search.0cc0c98424cc75d5e1dfbb9e3abb6785.svg",
+    "static/media/icon-location.svg": "/static/media/icon-location.f11c5487a9922cbad40a27e8cc1cfaee.svg",
+    "main.098400bd.css.map": "/static/css/main.098400bd.css.map",
+    "main.22fb464f.js.map": "/static/js/main.22fb464f.js.map"
   },
   "entrypoints": [
-    "static/css/main.18edb5f1.css",
-    "static/js/main.ec85412f.js"
+    "static/css/main.098400bd.css",
+    "static/js/main.22fb464f.js"
   ]
 }
